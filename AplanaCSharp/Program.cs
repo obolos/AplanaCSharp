@@ -6,7 +6,7 @@ namespace AplanaCSharp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            // new Task3().MultiplicationTable();
         }
     }
 }
