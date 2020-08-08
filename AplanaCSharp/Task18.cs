@@ -17,7 +17,6 @@ namespace AplanaCSharp
 
         public void arraySort()
         {
-            System.Console.OutputEncoding = System.Text.Encoding.UTF8;
             Console.WriteLine("Введите размерность для массива чисел");
             int len = int.Parse(Console.ReadLine());
             var array = new int[len];
