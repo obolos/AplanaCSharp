@@ -13,6 +13,12 @@ namespace AplanaCSharp
             Helper.Init();
         }
 
+        public Calculator(double i, double j)
+        {
+            x = i;
+            y = j;
+        }
+
         public void calculate()
         {
             while(true)
@@ -30,22 +36,22 @@ namespace AplanaCSharp
                 {
                     case "1":
                     {
-                        plus();
+                        Console.WriteLine(plus());
                         break;
                     }
                     case "2":
                     {
-                        minus();
+                        Console.WriteLine(minus());
                         break;
                     }
                     case "3":
                     {
-                        devide();
+                        Console.WriteLine(divide());
                         break;
                     }
                     case "4":
                     {
-                        multiply();
+                        Console.WriteLine(multiply());
                         break;
                     }
                     default:
@@ -59,29 +65,21 @@ namespace AplanaCSharp
         }
             
         
-        private void plus()
-        {
-            Console.WriteLine($"{x + y}");
-                
-        }
+        public double plus() => x + y;
 
-        private void minus()
-        {
-            Console.WriteLine($"{x - y}");
-        }
+        public double minus() => x - y;
+        
 
-        private void multiply()
-        {
-            Console.WriteLine($"{x * y}");
-        }
+        public double multiply() => x * y;
+        
 
-        private void devide()
+        public double divide()
         {
             if (y == 0)
                 throw new DivideByZeroException("Деление на ноль");
-            
-            Console.WriteLine($"{x / y}");
-            
+
+            return x / y;
+
         }
     }
     }

@@ -6,6 +6,6 @@ namespace AplanaCSharp
 {
     public class Task26
     {
-        
+        // Done!
     }
 }

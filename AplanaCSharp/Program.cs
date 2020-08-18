@@ -7,7 +7,6 @@ namespace AplanaCSharp
         static void Main(string[] args)
         {
             // new Task3().MultiplicationTable();
-          //  new Task24().readFile();
         }
     }
 }
