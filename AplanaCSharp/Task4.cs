@@ -28,10 +28,10 @@ namespace AplanaCSharp
             Console.WriteLine("Введите число z");
             int z = Int32.Parse(Console.ReadLine());
 
-            int avg = (x + y + z) / 3;
+            double avg = (double)(x + y + z) / 3;
             Console.WriteLine($"Среднее чисел равно: {avg}");
             
-            if (avg / 2 > 3)
+            if ((avg / 2) > 3)
                 Console.WriteLine("Программа выполнена корректно");
         }
     }

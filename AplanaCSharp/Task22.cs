@@ -31,24 +31,24 @@ namespace AplanaCSharp
                 array[i] = rand.Next(-10, 11);
             }
 
-            int max = array.Max();
-            int maxIndex = Array.IndexOf(array, max);
+            int minPositiveElement = array.OrderBy(i => i).SkipWhile(i => i <= 0).First();
+            int minPositiveIndex = Array.IndexOf(array, minPositiveElement);
 
-            int min = array.Min();
-            int minIndex = Array.IndexOf(array, min);
+            int maxNegativeElement = array.Min();
+            int maxNegativeIndex = Array.IndexOf(array, maxNegativeElement);
 
-            Console.WriteLine($"max = {max}");
-            Console.WriteLine($"min = {min}");
+            Console.WriteLine($"minPositiveElement = {minPositiveElement}");
+            Console.WriteLine($"maxNegativeElement = {maxNegativeElement}");
             
             foreach (var i in array)
             {
                 Console.Write(i + " ");
             }
 
-            int tmp = array[minIndex];
-            array[minIndex] = array[maxIndex];
-            array[maxIndex] = tmp;
-            
+            int tmp = array[maxNegativeIndex];
+            array[maxNegativeIndex] = array[minPositiveIndex];
+            array[minPositiveIndex] = tmp;
+
             Console.WriteLine();
             
             foreach (var i in array)

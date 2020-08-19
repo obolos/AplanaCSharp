@@ -16,9 +16,9 @@ namespace AplanaCSharp
         public void BinaryToInt()
         {
         
-            Console.WriteLine("Введите строку");
-            string text = Console.ReadLine();
-            Console.WriteLine(text);
+            Console.WriteLine("Введите число в бинарном формате");
+            int number = Convert.ToInt32(Console.ReadLine(), 2);
+            Console.WriteLine(number);
         }
     
                 

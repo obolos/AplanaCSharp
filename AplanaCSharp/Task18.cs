@@ -15,7 +15,7 @@ namespace AplanaCSharp
             Helper.Init();
         }
 
-        public void arraySort()
+        public void ArraySort()
         {
             Console.WriteLine("Введите размерность для массива чисел");
             int len = int.Parse(Console.ReadLine());
@@ -28,10 +28,7 @@ namespace AplanaCSharp
             ShellSort(array);
             Console.WriteLine();
             foreach (var a in array) Console.Write($"{a} ");
-            
-            {
-                
-            }
+
         }
         
         private void Swap(ref int a, ref int b)
