@@ -10,6 +10,7 @@
 // Найти общий вес подарка, общую стоимость подарка и вывести на консоль информацию о всех сладостях в подарке.
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace AplanaCSharp
@@ -55,16 +56,41 @@ namespace AplanaCSharp
             {
                 Console.Write(i + " ");
             }
+            
         }
         
     //    2. Формируется новогодний подарок.
     
         public void happyNewYear()
         {
+            // создать несколько объектов - экземпляров этого класса с различными значениями данных параметров
+            List<Sweet> gift= new List<Sweet>();
+            double summa = 0;
+            double summWeight = 0;
+            
+            Console.WriteLine("Укажите количество сладостей для этого подарка");
+            int sweets = int.Parse(Console.ReadLine());
+            
+            for (int i = 0; i < sweets; i++)
+            {
+                gift.Add(sweetGenerator());
+            }
 
+            Console.WriteLine("Подарок сформирован: ");
+            // вывести на консоль информацию о всех сладостях в подарке
+            foreach (var d in gift)
+            {
+                Console.WriteLine(d);
+                summa += d.Price;
+                summWeight += d.Weight;
+            }
+            
+            // Найти общий вес подарка, общую стоимость подарка
+            Console.WriteLine($"общий вес подарка {summWeight.ToString("0.00")} \nОбщая стоимость подарка {summa.ToString("0.00") + "$"}");
+            
         }
 
-        private void sweetGenerator()
+        private Sweet sweetGenerator()
         {
             var rand = new Random();
             string[] array = new[]
@@ -72,41 +98,49 @@ namespace AplanaCSharp
                 "Cupcake", "Donut", "Eclair", "Froyo", "Gingerbread", "Honeycomb", "Ice Cream Sandwich", "Jelly Bean",
                 "KitKat", "Lollipop", "Marshmallow", "Nougat", "Oreo", "Pie"
             };
-            var s = array[rand.Next(0, array.Length - 1)];
-            Console.WriteLine(s);
-
+            var sweetName = array[rand.Next(0, array.Length - 1)];
             var next = rand.NextDouble();
 
-            double result =  1.41421 + (next * (1.14159 - 0.41421));
-            string formattedNumber = result.ToString("0.00");
-            Console.WriteLine(formattedNumber + "$");
+            double price =  1.41421 + (next * (1.14159 - 0.41421));
+            double weight =  0.4 + (next * (0.7 - 0.4));
+            int id = rand.Next(0, 9999999); // свой уникальный параметр
 
+            return new Sweet(sweetName, weight, price, id);
         }
-        
 
-        enum Color
-        {
-            White,
-            Black,
-            Green,
-            Blue
-        }
-        
-        
         class Sweet
         {
             private string name;
             private double weight;
             private double price;
-            private Color color;
+            private int ID;
 
 
-            public Sweet(string name, double weight, double price, params Color[] colors)
+            public Sweet(string name, double weight, double price, int id)
             {
                 this.name = name;
                 this.weight = weight;
                 this.price = price;
-                
+                this.ID = id;
+
+            }
+            
+            public double Weight
+            {
+                get { return weight; }
+            }
+            
+            public double Price
+            {
+                get { return price; }
+            }
+
+            public override string ToString()
+            {
+                return "Название сладости " + name + 
+                       "\nВес: " + weight.ToString("0.00") +
+                       "\nЦена: " + price.ToString("0.00") + "$" +
+                       "\nУникальный параметр ID: " + ID;
             }
         }
     }
