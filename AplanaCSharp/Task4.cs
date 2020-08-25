@@ -31,7 +31,7 @@ namespace AplanaCSharp
             double avg = (double)(x + y + z) / 3;
             Console.WriteLine($"Среднее чисел равно: {avg}");
             
-            if ((avg / 2) > 3)
+            if ((avg % 2 == 0) && (avg > 3))
                 Console.WriteLine("Программа выполнена корректно");
         }
     }
